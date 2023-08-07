@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Main {% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <h2>Hello, {{name}} </h2>
+    <br>
+    <h3>For today:</h3>
+    <br>
+    <h5>You contacted: {{websites_contacted}} websites </h5> 
+    <h5>You sent: {{folow_ups_sent}} followUps </h5> 
+    <h5>You made {{money}} CAD </h5>
+    <h5>It is {{in_usd}} USD </h5> 
+    <h5>You are doing your best! Congratulations!</h5> 
+    <br>
+    <br>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %} Search DB {% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <h2 style="margin:auto;max-width:600px">Search for websites</h2>
+    <br>
+    <br>
+    <form class="example" method="post" action="" style="margin:auto;max-width:600px">
+        <p>
+            <input type="text" placeholder="Search by website" name="website">
+            <input type="submit" value="Search" />
+        </p>
+        <p><input type='radio' name='option' value='history' >  History</p>
+        <p><input type='radio' name='option' value='work' checked>  Work</p>
+    </form>
+    <br>
+    <br>
+    {%if data%} 
+        <table class="table table-striped table-bordered" style="width: 80%" align="center" >
+            <colgroup>
+                <col style="width: 50px">
+                <col style="width: 40px" span='4'>
+            </colgroup>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Stage</th>
+                    <th>Creation date</th>
+                    <th> </th>
+                    <th> </th>
+                </tr> 
+            {% for item in data %}
+                <tr>
+                    <td> {{item.website_address}}</td>
+                    <td> {{item.stage}}</td>
+                    <td> {{item.creation_date}}</td>
+                    <td> 
+                        <form method="get" action="{{ url_for('database.delete_website', website_id=item.website_id) }}">
+                            <input class="btn" type="submit" name="delete" value="Delete">
+                        </form>
+                    <td> <form method="get" action="{{ url_for('database.update_website', website_id=item.website_id) }}">
+                        <input class="btn" type="submit" name="update" value="Update">
+                        </form>
+                    </td>   
+                </tr>
+            {% endfor %}
+        </table>
+    {%endif%}
+{% endblock %}

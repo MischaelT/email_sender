@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %} Succesful update {% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <h3> Updated succesful {{website_name}}</h3>
+    <br>
+    <br>
+
+    {%if emails_deleted%}
+        <h4> These emails were deleted </h4>
+        <br>
+        {% for email in emails_deleted %}
+            <p>{{ email }}</p>
+        {% endfor %}
+
+        {%if website_deleted%}
+            <h5> Website {{website_name}} was postoned to 80 days </h5>
+        {%endif%}
+    {% else %}
+        <p> No emails were deleted </p>
+    {%endif%}
+    <br>
+    <br>
+    {%if emails_updated%}
+        <h4> These emails were updated </h4>
+        <br>
+        {% for email in emails_updated %}
+            <p>{{ email }}</p>
+        {% endfor %}
+    {% else %}
+        <p> No emails were updated </p>
+    {%endif%}
+{% endblock %}

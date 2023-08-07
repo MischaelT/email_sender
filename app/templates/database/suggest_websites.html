@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %} Suggest websites {% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <h3> Websites that can be contacted today</h3>
+    <br>
+    <br>
+
+    {%if websites%}
+
+        <form hidden action="{{ url_for('database.suggest_websites') }}" method="POST" name="submit_form">
+            <p>Check for today requirements {{ submit_form.submit }}</p>
+        </form>
+        <br>
+        <table class="table table-striped table-bordered" style="width: 80%" align="center" >
+            <colgroup>
+                <col style="width: 50px" >
+                <col style="width: 100px" >
+            </colgroup>
+                <tr>
+                    <th>Num</th>
+                    <th>Name</th>
+                    <th>Link</th>
+                    <th>Creation date</th>
+                    <th>Add to work</th>
+                    <th>Postpone</th>
+                </tr> 
+            {% for number, website in enumerat(websites, 1) %}
+                <tr>
+
+                    <td> {{number}}</td>
+                    <td> {{website.website_name}}</td>
+                    <td> <a href="https://{{website.website_address}}/ads.txt"> {{website.website_address}} </a></td>
+                    <td> {{website.creation_date}} </td>
+                    <td>
+                        <form action="{{ url_for('database.suggest_websites', website_id=website.website_id ) }}" method="POST" name="move_to_work_form">
+                            {{ move_to_work_form.dt }}
+                            {{ move_to_work_form.hidden_tag() }}
+                            {{ move_to_work_form.add }}
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="{{ url_for('database.suggest_websites', website_id=website.website_id ) }}" method="POST" name="postpone_form">
+                            {{ postpone_form.days }}
+                            {{ postpone_form.hidden_tag() }}
+                            {{ postpone_form.postpone }}
+                        </form>
+                    </td> 
+
+                </tr>
+            {% endfor %}
+        </table>
+    {%endif%}
+
+{% endblock %}

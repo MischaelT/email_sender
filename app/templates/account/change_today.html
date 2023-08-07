@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Change date {% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <h2>You want to change the date? </h2>
+    <br>
+    <h4>Set up a new date, please</h4>
+        <br>
+        <br>
+        <form action="{{ url_for('account.change_today') }}" method="POST" name="form">
+            {{ form.csrt_token }}
+            {{ form.dt(class='datepicker') }}
+            {{ form.hidden_tag() }}
+            {{ form.submit_date}}
+        </form>
+        <br>
+        <br>
+{% endblock %}

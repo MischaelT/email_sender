@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %} Run sending {% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <h3>Today we will send emails to such websites</h3>
+    <br>
+    <br>
+    <h4>Initial emails</h4>
+    <table class="table table-striped table-bordered" style="width: 80%">
+        <colgroup>
+            <col style="width: 50px">
+            <col style="width: 40px" span='1'>
+            <col style="width: 40px" span='1'>
+        </colgroup>
+        <tr>
+            <th>Website</th>
+            <th>Process Start Date</th>
+            <th>Type</th>
+        </tr> 
+        {% for website in initial_list %}
+            <tr>
+                <td> {{website.website_address}}</td>
+                <td> {{website.process_start_date}}</td>
+                <td> {{website.website_type}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h4>First FollowUp </h4>
+    <table class="table table-striped table-bordered" style="width: 80%">
+        <colgroup>
+            <col style="width: 50px">
+            <col style="width: 40px" span='1'>
+            <col style="width: 40px" span='1'>
+        </colgroup>
+        <tr>
+            <th>Website</th>
+            <th>Process Start Date</th>
+            <th>Type</th>
+        </tr> 
+        {% for website in first_follow_up %}
+            <tr>
+                <td> {{website.website_name}}</td>
+                <td> {{website.process_start_date}}</td>
+                <td> {{website.website_type}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h4>Second FollowUp</h4>
+    <table class="table table-striped table-bordered" style="width: 80%">
+        <colgroup>
+            <col style="width: 50px">
+            <col style="width: 40px" span='1'>
+            <col style="width: 40px" span='1'>
+        </colgroup>
+        <tr>
+            <th>Website</th>
+            <th>Process Start Date</th>
+            <th>Type</th>
+        </tr> 
+        {% for website in second_follow_up %}
+            <tr>
+                <td> {{website.website_name}}</td>
+                <td> {{website.process_start_date}}</td>
+                <td> {{website.website_type}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h4>Third FollowUp</h4>
+    <table class="table table-striped table-bordered" style="width: 80%">
+        <colgroup>
+            <col style="width: 50px">
+            <col style="width: 40px" span='1'>
+            <col style="width: 40px" span='1'>
+        </colgroup>
+        <tr>
+            <th>Website</th>
+            <th>Process Start Date</th>
+            <th>Type</th>
+        </tr> 
+        {% for website in third_follow_up %}
+            <tr>
+                <td> {{website.website_name}}</td>
+                <td> {{website.process_start_date}}</td>
+                <td> {{website.website_type}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h4>Fourth FollowUp</h4>
+    <table class="table table-striped table-bordered" style="width: 80%">
+        <colgroup>
+            <col style="width: 50px">
+            <col style="width: 40px" span='1'>
+            <col style="width: 40px" span='1'>
+        </colgroup>
+        <tr>
+            <th>Website</th>
+            <th>Process Start Date</th>
+            <th>Type</th>
+        </tr> 
+        {% for website in fourth_follow_up %}
+            <tr>
+                <td> {{website.website_name}}</td>
+                <td> {{website.process_start_date}}</td>
+                <td> {{website.website_type}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <form method="post" action="{{ url_for('sender.run_sending') }}">
+        <input type="submit" value="Run sending" />
+    </form>
+    <br>
+    <br>
+{% endblock %}

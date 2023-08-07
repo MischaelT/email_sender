@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} Update website {% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <h3>Update website {{website_name}}</h3>
+    <br> 
+    <p> Note, that if you just delete all of the emails, it would postpone this website to 90 days from now</p>
+    <form action="#" method="POST" name="form">
+        {{ form.csrt_token }}
+        {% for nested in form.emails %}
+            <p>{{ nested }}</p>
+        {% endfor %}
+        {{ form.hidden_tag() }}
+        <br>
+        {{ form.submit }}
+    </form>
+    <br>
+    <br>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %} Sending{% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <h4>Sending </h4>
+    <br>
+    <br>
+    <h5>Current stage: {{current_website['stage']}}</h5>
+    <h5>Current website: {{current_website['current_website']}}</h5>
+    <h5>Current email: {{current_website['current_email']}}</h5>
+    <h5>Websites left: {{current_website['websites_left']}}</h5>
+    <h5>Total errors: {{current_website['exception_count']}}</h5>
+    <br>
+    <br>
+
+    <script>
+        setTimeout(function(){
+                location.reload();
+            }, 15000);
+    </script>
+{% endblock %}

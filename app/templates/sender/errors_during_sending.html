@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} Run sending {% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <h3>Errors during sending</h3>
+    <br>
+    <br>
+    <table class="table table-striped table-bordered" style="width: 80%">
+        <colgroup>
+            <col style="width: 50px">
+            <col style="width: 40px" span='1'>
+        </colgroup>
+        <tr>
+            <th>Website</th>
+            <th>Process Start Date</th>
+        </tr> 
+        {% for website in errored_websites %}
+            <tr>
+                {% for name in website %}
+                    <td> {{name}}</td>
+                {% endfor %}
+                {% for name in website.values() %}
+                    <td> {{name}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+{% endblock %}

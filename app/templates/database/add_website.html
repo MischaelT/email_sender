@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %} Add website {% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <h2>Add new website </h2>
+    <br>
+        <br>
+        <br>
+        <form action="/database/add_website" method="POST" name="form">
+            {{ form.csrt_token }}
+            <p>Website address: </p>
+            <p>{{form.website_name}}</p>
+            <p>Emails:</p>
+            {% for nested in form.emails %}
+                <p>{{ nested }}</p>
+            {% endfor %}
+            <p>{{ form.dt(class='datepicker') }}</p>
+            {{ form.hidden_tag() }}
+            <p>{{ form.submit}}</p>
+        </form>
+        <br>
+        <br>
+{% endblock %}
