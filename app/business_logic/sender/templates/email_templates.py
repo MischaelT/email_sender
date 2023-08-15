@@ -1,9 +1,8 @@
 import random
-from app.config import FULL_NAME
 
 from business_logic.const import FIRST, FOURTH, INITIAL, SECOND, THIRD
 from business_logic.sender.templates.template import Template
-from config import COMPANY_NAME, SHORT_NAME
+from config import COMPANY_NAME, SHORT_NAME, FULL_NAME
 
 
 class generalAdvertisingTemplate(Template):

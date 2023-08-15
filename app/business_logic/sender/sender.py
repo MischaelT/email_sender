@@ -2,10 +2,10 @@ import random
 import time
 from typing import Dict, List
 
-from business_logic.checker.check_manager import CheckManager
+
 from business_logic.const import (GS, INITIAL, PREBID, text_choices)
 from business_logic.data.data_manager import DataManager
-from business_logic.finder.finder import EmailFinder
+
 from business_logic.mail.gmail_manager import GmailManager
 from business_logic.sender.templates.email_templates import \
     generalAdvertisingTemplate
@@ -17,12 +17,10 @@ from settings import TEST_MODE
 
 class Sender:
 
-    def __init__(self, manager: GmailManager, finder: EmailFinder, checker: CheckManager, data_manager: DataManager) -> None:
+    def __init__(self, manager: GmailManager, data_manager: DataManager) -> None:
 
         self.gmail_manager = manager
-        self.checker = checker
         self.data_manager = data_manager
-        self.finder = finder
 
         self.is_active: bool = False
         self.is_finished: bool = False
@@ -71,16 +69,16 @@ class Sender:
 
                 emails = self.data_manager.get_prospects(website.website_id)
 
-                if not emails:
-                    try:
-                        emails_to_db = self.finder.get_emails(website_domain=website.website_address)
-                    except Exception as exc:
-                        logger.error(exc)
-                        continue
+                # if not emails:
+                #     try:
+                #         emails_to_db = self.finder.get_emails(website_domain=website.website_address)
+                #     except Exception as exc:
+                #         logger.error(exc)
+                #         continue
 
-                    self.data_manager.push_prospects_to_db(website_address=website.website_address,
-                                                           data_to_push=emails_to_db)
-                    emails = self.data_manager.get_prospects(website.website_id)
+                #     self.data_manager.push_prospects_to_db(website_address=website.website_address,
+                #                                            data_to_push=emails_to_db)
+                #     emails = self.data_manager.get_prospects(website.website_id)
 
                 for email in emails:
                     self.current_website_info['exception_count'] = exception_count

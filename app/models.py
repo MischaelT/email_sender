@@ -44,7 +44,7 @@ class Website(BaseModel):
 
 class Prospect(BaseModel):
 
-    __tablename__ = "emails"
+    __tablename__ = "prospects"
     email_id = Column(Integer, unique=True, primary_key=True)
     website_id = Column(Integer, db.ForeignKey('websites.website_id'))
     email_address = Column(Text, unique=True, nullable=False)

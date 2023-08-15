@@ -7,7 +7,6 @@ from settings import BASEDIR, TODAY_DATE
 from views import IndexView
 
 from blueprints.account import init_app as account_init
-from blueprints.checker import init_app as checker_init
 from blueprints.database import init_app as database_init
 from blueprints.sender import init_app as sender_init
 

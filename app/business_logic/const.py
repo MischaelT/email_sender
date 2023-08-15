@@ -1,5 +1,4 @@
-from app.config import COMPANY_PHONE
-from config import EMAIL, FULL_NAME, POSITION, COMPANY_WEBSITE, COMPANY_ADDRESS
+from config import EMAIL, FULL_NAME, POSITION, COMPANY_WEBSITE, COMPANY_ADDRESS, COMPANY_PHONE
 
 
 INITIAL = 0
@@ -41,9 +40,7 @@ HTML_signature = f'''
                                 <td>{signature_texts[2]}</td>
                             </tr>
                             <br>
-                            <tr>
-                                <td>{signature_texts[3]}{signature_texts[4]}</a></td>
-                            </tr>
+
                         </table>
                     '''  # noqa
 
